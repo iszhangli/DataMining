@@ -1,0 +1,8 @@
+2021-09-11 10:23:32,035 - <ipython-input-10-45132c75376d>[line:35] - INFO: Accuracy: 0.69 (+/- 0.00) [KNN]
+2021-09-11 10:24:41,816 - <ipython-input-13-2090beca4c87>[line:1] - INFO: Test data to file: +/-0.2f
+2021-09-11 10:24:52,196 - <ipython-input-14-a48573ed84cc>[line:1] - INFO: Test data to file: +/-0.2f
+2021-09-11 10:24:52,196 - <ipython-input-14-a48573ed84cc>[line:2] - INFO: Test data to file: +/-0.3f
+2021-09-11 10:24:54,686 - <ipython-input-15-abfc5305b4d1>[line:1] - INFO: Test data to file: +/-0.2f
+2021-09-11 10:24:54,686 - <ipython-input-15-abfc5305b4d1>[line:2] - INFO: Test data to file: +/-0.3f
+2021-09-11 10:24:54,686 - <ipython-input-15-abfc5305b4d1>[line:3] - INFO: Test data to file: +/-0.4f
+2021-09-11 10:27:47,308 - <ipython-input-16-46f1725bb1f3>[line:35] - INFO: Accuracy: 0.69 (+/- 0.00) [KNN]
