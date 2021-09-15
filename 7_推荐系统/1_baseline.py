@@ -16,83 +16,60 @@ import pandas as pd
 import warnings
 from collections import defaultdict
 import collections
+import math
+
 warnings.filterwarnings('ignore')
 
-
-
-def reduce_memory(df):
-    starttime = time.time()
-    numerics = ['int16', 'int32', 'int64', 'float16', 'float32', 'float64']
-    start_mem = df.memory_usage().sum() / 1024**2
-    for col in df.columns:
-        col_types = df[col].dtypes
-        if col_types in numerics:
-            c_min = df[col].min()
-            c_max = df[col].max()
-            if pd.isnull(c_min) or pd.isnull(c_max):
-                continue
-            if str(col_types)[:3] == 'int':
-                if c_min > np.iinfo(np.int8).min and c_max < np.iinfo(np.int8).max:
-                    df[col] = df[col].astype(np.int8)
-                elif c_min > np.iinfo(np.int16).min and c_max < np.iinfo(np.int16).max:
-                    df[col] = df[col].astype(np.int16)
-                elif c_min > np.iinfo(np.int32).min and c_max < np.iinfo(np.int32).max:
-                    df[col] = df[col].astype(np.int32)
-                elif c_min > np.iinfo(np.int64).min and c_max < np.iinfo(np.int64).max:
-                    df[col] = df[col].astype(np.int64)
-            else:
-                if c_min > np.finfo(np.float16).min and c_max < np.finfo(np.float16).max:
-                    df[col] = df[col].astype(np.float16)
-                elif c_min > np.finfo(np.float32).min and c_max < np.finfo(np.float32).max:
-                    df[col] = df[col].astype(np.float32)
-                else:
-                    df[col] = df[col].astype(np.float64)
-    end_mem = df.memory_usage().sum() / 1024**2
-    print('-- Mem. usage decreased to {:5.2f} Mb ({:.1f}% reduction),time spend:{:2.2f} min'.format(end_mem,
-                                                                                                    100*(start_mem-end_mem)/start_mem,
-                                                                                                    (time.time()-starttime)/60))
-    return df
-
-
-# debug模式：从训练集中划出一部分数据来调试代码
-def get_all_click_sample(data_path, sample_nums=10000):
-    """
-        训练集中采样一部分数据调试
-        data_path: 原数据的存储路径
-        sample_nums: 采样数目（这里由于机器的内存限制，可以采样用户做）
-    """
-    all_click = pd.read_csv(data_path + 'train_click_log.csv')
-    all_user_ids = all_click.user_id.unique()
-
-    sample_user_ids = np.random.choice(all_user_ids, size=sample_nums, replace=False)
-    all_click = all_click[all_click['user_id'].isin(sample_user_ids)]
-
-    all_click = all_click.drop_duplicates((['user_id', 'click_article_id', 'click_timestamp']))
-    return all_click
-
-
-# 读取点击数据，这里分成线上和线下，如果是为了获取线上提交结果应该讲测试集中的点击数据合并到总的数据中
-# 如果是为了线下验证模型的有效性或者特征的有效性，可以只使用训练集
-def get_all_click_df(data_path='./data_raw/', offline=True):
-    if offline:
-        all_click = pd.read_csv(data_path + 'train_click_log.csv')
-    else:
-        trn_click = pd.read_csv(data_path + 'train_click_log.csv')
-        tst_click = pd.read_csv(data_path + 'testA_click_log.csv')
-
-        all_click = trn_click.append(tst_click)
-
-    all_click = all_click.drop_duplicates((['user_id', 'click_article_id', 'click_timestamp']))
-    return all_click
-
-
-path = 'C:/ZhangLI/Codes/DataSet/新闻推荐比赛数据/'
+path = 'E:/Dataset/新闻推荐比赛数据/'
 train = path + 'articles.csv'
 train_click = path + 'train_click_log.csv'
-
 # 使用历史浏览 点击文章的数据信息预测用户未来的点击行为，即用户最后一次点击新闻的文章
 # 问题转换 30万用户 200w点击 36w篇文章
 train_df = pd.read_csv(train)
 train_click_df = pd.read_csv(train_click)
 # 全量训练集
-all_click_df = get_all_click_df(data_path, offline=False)
+# all_click_df = get_all_click_df(data_path, offline=False)
+
+import copy
+
+all_click_df = copy.deepcopy(train_click_df)
+
+
+def get_user_item_time(all_click_df):
+    c = all_click_df.sort_values('click_timestamp')
+
+    # 这应该是个键值对list(zip(c['click_article_id'], c['click_timestamp']))
+    def make_item_time_pair(df):
+        return list(zip(df['click_article_id'], df['click_timestamp']))
+
+    user_item_time_df = c.groupby('user_id')['click_article_id', 'click_timestamp'].apply(
+        lambda x: make_item_time_pair(x)).reset_index().rename(columns={0: 'item_time_list'})
+    user_item_time_dict = dict(zip(user_item_time_df['user_id'], user_item_time_df['item_time_list']))
+    return user_item_time_dict
+
+
+user_item_time_dict = get_user_item_time(all_click_df)
+# 计算物品相似度
+i2i_sim = {}
+item_cnt = defaultdict(int)
+ii = 0
+for user, item_time_list in user_item_time_dict.items():
+    # print(user, item_time_list)
+    # print('-' * 10)
+    # 基于商品的协同过滤
+    for i, i_click_time in item_time_list:
+        # print(i, i_click_time)
+        item_cnt[i] += 1
+        i2i_sim.setdefault(i, {})  # 当key不存在时，设置为默认值，key存在时，返回值
+        for j, j_click_time in item_time_list:
+            if (i == j):
+                continue
+            i2i_sim[i].setdefault(j, 0)
+            i2i_sim[i][j] += 1 / math.log(len(item_time_list) + 1)  # 1/log(n+1)
+# {30760: {157507: 0.01076245713904683, 211442: 0.05262861609293018}}
+i2i_sim_ = i2i_sim.copy()
+for i, related_items in i2i_sim.items():
+    print(i, related_items)
+    for j, wij in related_items.items():
+        i2i_sim_[i][j] = wij / math.sqrt(item_cnt[i] * item_cnt[j])  # 30760:311   两篇文章成对出现的值 / ，每篇文章出现的次数
+
