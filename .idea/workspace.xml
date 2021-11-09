@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5d2aa267-08d2-4b7b-9c53-cc6b19c04088" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/8_个人违约贷款/1_baseline.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/9_optiver波动/1_baseline.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/9_optiver波动/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/7_推荐系统/1_baseline.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/7_推荐系统/1_baseline.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/7_推荐系统/2_数据分析.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/7_推荐系统/2_数据分析.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/8_个人违约贷款/1_baseline.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JupyterTrust" id="47db4d90-c3ce-4ba8-a130-edfc6c276bea" />
   <component name="ProjectId" id="20PYPgRkc3QDWuq2qq2ZWOPG0Lq" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -30,6 +35,11 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\ZhangLI\Codes\JupyterLab\PlayData\9_optiver波动" />
+    </key>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -53,11 +63,22 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1635947666997</updated>
-      <workItem from="1635947668957" duration="556000" />
+      <workItem from="1635947668957" duration="5777000" />
+      <workItem from="1636374183182" duration="48000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="463" y="126" key="FileChooserDialogImpl" timestamp="1636374221719">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="126" key="FileChooserDialogImpl/0.0.1366.728/1366.3.1920.1040@0.0.1366.728" timestamp="1636374221719" />
+    <state x="363" y="195" key="com.intellij.ide.util.TipDialog" timestamp="1636374216771">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="363" y="195" key="com.intellij.ide.util.TipDialog/0.0.1366.728/1366.3.1920.1040@0.0.1366.728" timestamp="1636374216771" />
   </component>
 </project>
