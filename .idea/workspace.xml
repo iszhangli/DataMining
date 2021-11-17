@@ -2,12 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5d2aa267-08d2-4b7b-9c53-cc6b19c04088" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/9_optiver波动/1_baseline.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/9_optiver波动/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/7_推荐系统/1_baseline.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/7_推荐系统/1_baseline.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/7_推荐系统/2_数据分析.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/7_推荐系统/2_数据分析.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/8_个人违约贷款/1_baseline.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/classification_summary-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/classification_summary-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/8_个人违约贷款/.ipynb_checkpoints/1_check_data-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/8_个人违约贷款/.ipynb_checkpoints/2_preprocessing-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/8_个人违约贷款/.ipynb_checkpoints/param_adjust-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/8_个人违约贷款/1_check_data.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/8_个人违约贷款/2_preprocessing.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/8_个人违约贷款/param_adjust.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/8_个人违约贷款/submission.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/8_个人违约贷款/submission@20211109.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/8_个人违约贷款/submission@20211112.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/8_个人违约贷款/submission@20211115.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/classification_summary.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/classification_summary.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +48,35 @@
       <recent name="C:\ZhangLI\Codes\JupyterLab\PlayData\9_optiver波动" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="loan_main" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="PlayData" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/a_8_loan_default/loan_default_predict" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/a_8_loan_default/loan_default_predict/loan_main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.loan_main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
       <list>
@@ -65,6 +101,8 @@
       <updated>1635947666997</updated>
       <workItem from="1635947668957" duration="5777000" />
       <workItem from="1636374183182" duration="48000" />
+      <workItem from="1637070626051" duration="3628000" />
+      <workItem from="1637135365879" duration="2117000" />
     </task>
     <servers />
   </component>
@@ -76,9 +114,29 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="126" key="FileChooserDialogImpl/0.0.1366.728/1366.3.1920.1040@0.0.1366.728" timestamp="1636374221719" />
-    <state x="363" y="195" key="com.intellij.ide.util.TipDialog" timestamp="1636374216771">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1877" height="179" key="GridCell.Tab.0.bottom" timestamp="1637136624809">
+      <screen x="1366" y="3" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.3.1920.1040@1366.3.1920.1040" timestamp="1637136624809" />
+    <state width="1877" height="179" key="GridCell.Tab.0.center" timestamp="1637136624809">
+      <screen x="1366" y="3" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="179" key="GridCell.Tab.0.center/0.0.1366.728/1366.3.1920.1040@1366.3.1920.1040" timestamp="1637136624809" />
+    <state width="1877" height="179" key="GridCell.Tab.0.left" timestamp="1637136624808">
+      <screen x="1366" y="3" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="179" key="GridCell.Tab.0.left/0.0.1366.728/1366.3.1920.1040@1366.3.1920.1040" timestamp="1637136624808" />
+    <state width="1877" height="179" key="GridCell.Tab.0.right" timestamp="1637136624809">
+      <screen x="1366" y="3" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="179" key="GridCell.Tab.0.right/0.0.1366.728/1366.3.1920.1040@1366.3.1920.1040" timestamp="1637136624809" />
+    <state x="1876" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1637135362567">
+      <screen x="1366" y="3" width="1920" height="1040" />
     </state>
     <state x="363" y="195" key="com.intellij.ide.util.TipDialog/0.0.1366.728/1366.3.1920.1040@0.0.1366.728" timestamp="1636374216771" />
+    <state x="1876" y="282" key="com.intellij.ide.util.TipDialog/0.0.1366.728/1366.3.1920.1040@1366.3.1920.1040" timestamp="1637135362567" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/PlayData$loan_main.coverage" NAME="loan_main Coverage Results" MODIFIED="1637136624787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/a_8_loan_default/loan_default_predict" />
   </component>
 </project>
