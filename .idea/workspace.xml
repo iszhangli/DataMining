@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5d2aa267-08d2-4b7b-9c53-cc6b19c04088" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/classification_summary-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/classification_summary-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/8_个人违约贷款/.ipynb_checkpoints/1_check_data-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/8_个人违约贷款/.ipynb_checkpoints/2_preprocessing-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/8_个人违约贷款/.ipynb_checkpoints/param_adjust-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/8_个人违约贷款/1_check_data.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/8_个人违约贷款/2_preprocessing.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/8_个人违约贷款/param_adjust.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/8_个人违约贷款/submission.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/8_个人违约贷款/submission@20211109.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/8_个人违约贷款/submission@20211112.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/8_个人违约贷款/submission@20211115.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/classification_summary.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/classification_summary.ipynb" afterDir="false" />
-    </list>
+    <list default="true" id="5d2aa267-08d2-4b7b-9c53-cc6b19c04088" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -102,7 +88,7 @@
       <workItem from="1635947668957" duration="5777000" />
       <workItem from="1636374183182" duration="48000" />
       <workItem from="1637070626051" duration="3628000" />
-      <workItem from="1637135365879" duration="2117000" />
+      <workItem from="1637135365879" duration="2732000" />
     </task>
     <servers />
   </component>
@@ -114,21 +100,25 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="126" key="FileChooserDialogImpl/0.0.1366.728/1366.3.1920.1040@0.0.1366.728" timestamp="1636374221719" />
-    <state width="1877" height="179" key="GridCell.Tab.0.bottom" timestamp="1637136624809">
-      <screen x="1366" y="3" width="1920" height="1040" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1637199470456">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.3.1920.1040@0.0.1366.728" timestamp="1637199470456" />
     <state width="1877" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.3.1920.1040@1366.3.1920.1040" timestamp="1637136624809" />
-    <state width="1877" height="179" key="GridCell.Tab.0.center" timestamp="1637136624809">
-      <screen x="1366" y="3" width="1920" height="1040" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1637199470455">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728/1366.3.1920.1040@0.0.1366.728" timestamp="1637199470455" />
     <state width="1877" height="179" key="GridCell.Tab.0.center/0.0.1366.728/1366.3.1920.1040@1366.3.1920.1040" timestamp="1637136624809" />
-    <state width="1877" height="179" key="GridCell.Tab.0.left" timestamp="1637136624808">
-      <screen x="1366" y="3" width="1920" height="1040" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1637199470455">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728/1366.3.1920.1040@0.0.1366.728" timestamp="1637199470455" />
     <state width="1877" height="179" key="GridCell.Tab.0.left/0.0.1366.728/1366.3.1920.1040@1366.3.1920.1040" timestamp="1637136624808" />
-    <state width="1877" height="179" key="GridCell.Tab.0.right" timestamp="1637136624809">
-      <screen x="1366" y="3" width="1920" height="1040" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1637199470455">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728/1366.3.1920.1040@0.0.1366.728" timestamp="1637199470455" />
     <state width="1877" height="179" key="GridCell.Tab.0.right/0.0.1366.728/1366.3.1920.1040@1366.3.1920.1040" timestamp="1637136624809" />
     <state x="1876" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1637135362567">
       <screen x="1366" y="3" width="1920" height="1040" />
