@@ -1,7 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5d2aa267-08d2-4b7b-9c53-cc6b19c04088" name="Default Changelist" comment="" />
+    <list default="true" id="5d2aa267-08d2-4b7b-9c53-cc6b19c04088" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_tabular_playgroud/.ipynb_checkpoints/EDA-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_tabular_playgroud/EDA.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2_Santander_product_recommend/.ipynb_checkpoints/1_EDA-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2_Santander_product_recommend/.ipynb_checkpoints/Readme-checkpoint.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2_Santander_product_recommend/1_EDA.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2_Santander_product_recommend/readme.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_新闻文本分类-NLP/.ipynb_checkpoints/3_基于机器学习的文本分类-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_新闻文本分类-NLP/.ipynb_checkpoints/4_基于深度学习的文本分类-NLP-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_新闻文本分类-NLP/.ipynb_checkpoints/5_基于深度学习的文本分类-word2vec-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_新闻文本分类-NLP/.ipynb_checkpoints/EDA-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_新闻文本分类-NLP/.ipynb_checkpoints/word2vec-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_新闻文本分类-NLP/3_基于机器学习的文本分类.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_新闻文本分类-NLP/4_基于深度学习的文本分类-NLP.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_新闻文本分类-NLP/5_基于深度学习的文本分类-word2vec.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_新闻文本分类-NLP/EDA.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_新闻文本分类-NLP/model_cooking.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_新闻文本分类-NLP/word2vec.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_新闻文本分类-NLP/word2vec.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_新闻文本分类-NLP/word2vec.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_银行信用卡流失/.ipynb_checkpoints/Untitled-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_银行信用卡流失/Untitled.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/5_银行波动/.ipynb_checkpoints/EDA-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/5_银行波动/EDA.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/6_金融风控-贷款违约/.ipynb_checkpoints/1_数据理解-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/6_金融风控-贷款违约/.ipynb_checkpoints/2_特征处理-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/6_金融风控-贷款违约/.ipynb_checkpoints/3_模型调参-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/6_金融风控-贷款违约/.ipynb_checkpoints/4_模型集成-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/6_金融风控-贷款违约/.ipynb_checkpoints/log-checkpoint.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/6_金融风控-贷款违约/1_数据理解.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/6_金融风控-贷款违约/2_特征处理.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/6_金融风控-贷款违约/3_模型调参.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/6_金融风控-贷款违约/4_模型集成.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/6_金融风控-贷款违约/log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7_推荐系统/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7_推荐系统/.idea/7_推荐系统.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7_推荐系统/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7_推荐系统/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7_推荐系统/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7_推荐系统/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7_推荐系统/.ipynb_checkpoints/1_baseline-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7_推荐系统/.ipynb_checkpoints/2_数据分析-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7_推荐系统/.ipynb_checkpoints/3_多路召回-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7_推荐系统/1_baseline.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7_推荐系统/1_baseline.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7_推荐系统/2_数据分析.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/7_推荐系统/3_多路召回.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/9_optiver波动/.ipynb_checkpoints/1_baseline-checkpoint.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/9_optiver波动/.ipynb_checkpoints/1_expore_data-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/9_optiver波动/.ipynb_checkpoints/2_baseline-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/9_optiver波动/.ipynb_checkpoints/3_金牌代码-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/9_optiver波动/1_baseline.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/9_optiver波动/1_expore_data.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/9_optiver波动/2_baseline.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/9_optiver波动/3_金牌代码.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/9_optiver波动/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a_8_loan_default/.ipynb_checkpoints/1_check_data-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a_8_loan_default/.ipynb_checkpoints/2_preprocessing-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a_8_loan_default/.ipynb_checkpoints/3_EDA-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a_8_loan_default/.ipynb_checkpoints/4_baseline_v2-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a_8_loan_default/.ipynb_checkpoints/param_adjust-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a_8_loan_default/1_check_data.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a_8_loan_default/2_preprocessing.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a_8_loan_default/3_EDA.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a_8_loan_default/4_baseline_v2.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a_8_loan_default/loan_default_predict/description.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a_8_loan_default/loan_default_predict/loan_main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a_8_loan_default/loan_default_predict/prediction.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a_8_loan_default/loan_default_predict/preprocessor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a_8_loan_default/loan_default_predict/print_metric.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/a_8_loan_default/param_adjust.ipynb" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,9 +99,12 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/i_新闻文本分类" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\ZhangLI\Codes\JupyterLab\PlayData\i_新闻文本分类" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\ZhangLI\Codes\JupyterLab\PlayData\9_optiver波动" />
     </key>
@@ -89,6 +164,10 @@
       <workItem from="1636374183182" duration="48000" />
       <workItem from="1637070626051" duration="3628000" />
       <workItem from="1637135365879" duration="2732000" />
+      <workItem from="1637666885253" duration="101000" />
+      <workItem from="1637667016669" duration="18000" />
+      <workItem from="1637667083566" duration="1705000" />
+      <workItem from="1637668829291" duration="14000" />
     </task>
     <servers />
   </component>
@@ -96,10 +175,11 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="463" y="126" key="FileChooserDialogImpl" timestamp="1636374221719">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="2017" y="183" key="FileChooserDialogImpl" timestamp="1637668834035">
+      <screen x="1366" y="3" width="1920" height="1040" />
     </state>
     <state x="463" y="126" key="FileChooserDialogImpl/0.0.1366.728/1366.3.1920.1040@0.0.1366.728" timestamp="1636374221719" />
+    <state x="2017" y="183" key="FileChooserDialogImpl/0.0.1366.728/1366.3.1920.1040@1366.3.1920.1040" timestamp="1637668834035" />
     <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1637199470456">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -120,11 +200,11 @@
     </state>
     <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728/1366.3.1920.1040@0.0.1366.728" timestamp="1637199470455" />
     <state width="1877" height="179" key="GridCell.Tab.0.right/0.0.1366.728/1366.3.1920.1040@1366.3.1920.1040" timestamp="1637136624809" />
-    <state x="1876" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1637135362567">
+    <state x="1876" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1637667019444">
       <screen x="1366" y="3" width="1920" height="1040" />
     </state>
-    <state x="363" y="195" key="com.intellij.ide.util.TipDialog/0.0.1366.728/1366.3.1920.1040@0.0.1366.728" timestamp="1636374216771" />
-    <state x="1876" y="282" key="com.intellij.ide.util.TipDialog/0.0.1366.728/1366.3.1920.1040@1366.3.1920.1040" timestamp="1637135362567" />
+    <state x="363" y="195" key="com.intellij.ide.util.TipDialog/0.0.1366.728/1366.3.1920.1040@0.0.1366.728" timestamp="1637666971233" />
+    <state x="1876" y="282" key="com.intellij.ide.util.TipDialog/0.0.1366.728/1366.3.1920.1040@1366.3.1920.1040" timestamp="1637667019444" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/PlayData$loan_main.coverage" NAME="loan_main Coverage Results" MODIFIED="1637136624787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/a_8_loan_default/loan_default_predict" />
