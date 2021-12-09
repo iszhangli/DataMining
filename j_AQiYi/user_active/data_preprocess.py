@@ -30,9 +30,9 @@ def user_playback_processing(user_playback_data):
 
 def main():
 
-    input_dir = "C:/ZhangLI/Codes/DataSet/爱奇艺用户留存预测/"
+    # input_dir = "C:/ZhangLI/Codes/DataSet/爱奇艺用户留存预测/"
     # input_dir = "E:/Dataset/爱奇艺用户留存预测/"
-    # input_dir = '/home/zzs/aqy_user_retention/data/'
+    input_dir = '/home/zzs/aqy_user_retention/data/'
     app_launch_dir = input_dir + 'app_launch_logs.csv'
     user_playback_dir = input_dir + 'user_playback_data.csv'
     video_info_dir = input_dir + 'video_related_data.csv'
