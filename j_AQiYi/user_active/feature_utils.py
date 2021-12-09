@@ -31,10 +31,23 @@ def gen_launch_seq(row):
     seq = [seq_map.get(x, 0) for x in range(end - 31, end + 1)]
     return seq
 
+def target_encoding1(name, df, m=1):
+    # target encoding
+    # df[name] = df[name].astype(str)
+    # df[name] = df[name].str.split(";")  # TODO
+    # df = df.explode(name)
+    overall = df["label"].mean()
+    df = df.groupby(name).agg(
+        freq=("label", "count"),
+        in_category=("label", np.mean)
+    ).reset_index()
+    df["weight"] = df["freq"] / (df["freq"] + m)
+    df["score"] = df["weight"] * df["in_category"] + (1 - df["weight"]) * overall
+    return df
 
 def target_encoding(name, df, m=1):
     # target encoding
-    df[name] = df[name].astype('string').str.split(";")
+    df[name] = df[name].str.split(";")
     df = df.explode(name)
     overall = df["label"].mean()
     df = df.groupby(name).agg(
@@ -62,6 +75,7 @@ def get_duration_prefer(duration_list):
     else:
         return np.nan
 
+
 def get_id_score(id_list):
     # TODO check the score f
     global id_score
@@ -76,10 +90,11 @@ def get_id_score(id_list):
     else:
         return np.nan
 
+
 def target_id_score(column1, column2, column3, df):
     id_score = dict()
     father_df = df.loc[(df.label >= 0) & (df[column1].notna()), [column1, "label"]]
-    father_id_score = target_encoding(column1, father_df)
+    father_id_score = target_encoding1(column1, father_df)
     id_score.update({x[1]: x[5] for x in father_id_score.itertuples()})
     del father_df, father_id_score
     gc.collect()

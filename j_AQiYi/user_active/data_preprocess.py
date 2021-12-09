@@ -31,8 +31,8 @@ def user_playback_processing(user_playback_data):
 def main():
 
     # input_dir = "C:/ZhangLI/Codes/DataSet/爱奇艺用户留存预测/"
-    # input_dir = "E:/Dataset/爱奇艺用户留存预测/"
-    input_dir = '/home/zzs/aqy_user_retention/data/'
+    input_dir = "E:/Dataset/爱奇艺用户留存预测/"
+    # input_dir = '/home/zzs/aqy_user_retention/data/'
     app_launch_dir = input_dir + 'app_launch_logs.csv'
     user_playback_dir = input_dir + 'user_playback_data.csv'
     video_info_dir = input_dir + 'video_related_data.csv'
@@ -63,6 +63,7 @@ def main():
                                 how="left", on="user_id")
     launch_grp = launch_grp.append(test_data)
     # launch_seq
+    # launch_grp["launch_seq"] = 1  # TODO
     launch_grp["launch_seq"] = launch_grp.apply(gen_launch_seq, axis=1)  # TODO [launch_type, launch_date]没用了吗？
     print(f'launch group columns {launch_grp.columns}')
 
@@ -77,7 +78,8 @@ def main():
     )
 
     # read user playback
-    user_playback = pd.read_csv(user_playback_dir)  # 2168M
+    user_playback = pd.read_csv(user_playback_dir)  # 2168M # TODO
+    # user_playback = pd.read_csv(user_playback_dir)  # 2168M
     user_playback = reduce_memory(user_playback)  #
 
     user_playback = user_playback.merge(data, how="inner", on="user_id")
