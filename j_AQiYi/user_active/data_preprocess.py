@@ -15,7 +15,7 @@ def app_launch_processing(app_launch_data):
         .reset_index()
 
     del app_launch
-    gc.collect()
+    # gc.collect()
 
     # add [end_date, label]
     launch_grp['end_date'] = launch_grp.launch_date.apply(get_end_date)
