@@ -28,7 +28,7 @@ def train_fn(model, optimizer, scheduler, loss_fn, dataloader, device):
         loss = loss_fn(outputs, targets)
         loss.backward()
         optimizer.step()
-        scheduler.step()
+        scheduler.step()  # TODO how to use it?
 
         final_loss += loss.item()
 
@@ -65,6 +65,7 @@ def run_train(train_dataset, valid_dataset, seed=2021):   # or name run_train
 
     model.to(DEVICE)
     optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE, weight_decay=WEIGHT_DECAY)
+    # set the learning rate of Each param group
     scheduler = optim.lr_scheduler.OneCycleLR(optimizer=optimizer, pct_start=0.1, div_factor=1e5,
                                               max_lr=0.0001, epochs=EPOCHS, steps_per_epoch=len(trainloader))
 
