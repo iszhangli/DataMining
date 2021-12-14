@@ -6,16 +6,35 @@
 
 from test_nn.utils import *
 from test_nn.dataset import TestDataset, TrainDataset
-from test_nn.model import Model
+from test_nn.model import Model, SmoothBCEwLogits
 
 from sklearn.model_selection import StratifiedKFold
 import pandas as pd
 
 import torch
 from torch import nn
+import torch.optim as optim
 
-def train_fn():
-    pass
+
+
+def train_fn(model, optimizer, scheduler, loss_fn, dataloader, device):
+    model.train()
+    final_loss = 0
+
+    for data in dataloader:
+        optimizer.zero_grad()
+        inputs, targets = data['x'].to(device), data['y'].to(device)
+        outputs = model(inputs)
+        loss = loss_fn(outputs, targets)
+        loss.backward()
+        optimizer.step()
+        scheduler.step()
+
+        final_loss += loss.item()
+
+    final_loss /= len(dataloader)  # The loss sum / mean / change dataloader to data
+
+    return final_loss
 
 
 def run_train(train_dataset, valid_dataset, seed=2021):   # or name run_train
@@ -27,8 +46,13 @@ def run_train(train_dataset, valid_dataset, seed=2021):   # or name run_train
     BATCH_SIZE = 128
     LEARNING_RATE = 1e-3
     WEIGHT_DECAY = 1e-5
+    EPOCHS = 20
     EARLY_STOPPING_STEPS = 10
     EARLY_STOP = False
+
+    num_features = 37
+    num_targets_0 = 5
+    hidden_size = 1024
 
     trainloader = torch.utils.data.DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)  # 128
     validloader = torch.utils.data.DataLoader(valid_dataset, batch_size=BATCH_SIZE, shuffle=False)
@@ -39,12 +63,46 @@ def run_train(train_dataset, valid_dataset, seed=2021):   # or name run_train
         hidden_size=hidden_size,
     )
 
+    model.to(DEVICE)
+    optimizer = torch.optim.Adam(model.parameters(), lr=LEARNING_RATE, weight_decay=WEIGHT_DECAY)
+    scheduler = optim.lr_scheduler.OneCycleLR(optimizer=optimizer, pct_start=0.1, div_factor=1e5,
+                                              max_lr=0.0001, epochs=EPOCHS, steps_per_epoch=len(trainloader))
+
+    loss_tr = SmoothBCEwLogits(smoothing=0.001)
+    # loss_tr = nn.BCEWithLogitsLoss()
+    loss_va = nn.BCEWithLogitsLoss()  # the mean of logistic
+
+    early_stopping_steps = EARLY_STOPPING_STEPS
+    early_step = 0
+
+    oof = 1
+    best_loss = np.inf
+
+    mod_name = f"FOLD_mod11_{seed}_{seed}_.pth"
+
+    for epoch in range(EPOCHS):
+        train_loss = train_fn(model, optimizer, scheduler, loss_tr, trainloader, DEVICE)  # completed data TODO
+        # valid_loss, valid_preds = valid_fn(model, loss_va, validloader, DEVICE)  # The model parameter TODO
+        print(f"SEED: {seed}, FOLD: {fold}, EPOCH: {epoch},train_loss: {train_loss}, valid_loss: {valid_loss}")
+
+        if valid_loss < best_loss:
+
+            best_loss = valid_loss
+            # oof[val_idx] = valid_preds
+            torch.save(model.state_dict(), mod_name)
+
+        elif (EARLY_STOP == True):
+
+            early_step += 1
+            if (early_step >= early_stopping_steps):
+                break
 
 
 def main():
 
     print(f'Read origin data.')
     data_dir = 'C:/ZhangLI/Codes/DataSet/个人违贷/'
+    data_dir = 'E:/Dataset/个人违贷/'
     train_ = pd.read_csv(data_dir + 'default_train.csv', index_col='Unnamed: 0')
     test_ = pd.read_csv(data_dir + 'default_test.csv', index_col='Unnamed: 0')
 
@@ -52,6 +110,7 @@ def main():
     y_train = train_['isDefault']
     feature_cols = x_train.columns.to_list()
     target_cols = ['isDefault']
+    # print(len(feature_cols))
 
     # normalization
     print(f'Normalization.')

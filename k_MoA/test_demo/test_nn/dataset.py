@@ -15,8 +15,8 @@ class TrainDataset:  # 这个地方的实现有点意思，如果可以的话，
 
     def __getitem__(self, idx):
         dct = {
-            'x' : torch.tensor(self.features[idx, :], dtype=torch.float),
-            'y' : torch.tensor(self.targets[idx, :], dtype=torch.float)
+            'x': torch.tensor(self.features[idx, :], dtype=torch.float),
+            'y': torch.tensor(self.targets[idx], dtype=torch.float)
         }
         return dct
 
