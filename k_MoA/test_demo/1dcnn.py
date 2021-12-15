@@ -162,7 +162,7 @@ def valid_fn(model, loss_fn, dataloader, device):
     return final_loss, valid_preds
 
 def inference_fn(model, dataloader, device):
-    model.eval()
+    model.eval()  # make it do
     preds = []
 
     for data in dataloader:

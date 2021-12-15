@@ -25,6 +25,7 @@ def train_fn(model, optimizer, scheduler, loss_fn, dataloader, device):
         optimizer.zero_grad()
         inputs, targets = data['x'].to(device), data['y'].to(device)
         outputs = model(inputs)
+        targets = torch.reshape(targets, [targets.shape[0], 1])
         loss = loss_fn(outputs, targets)
         loss.backward()
         optimizer.step()
@@ -35,6 +36,25 @@ def train_fn(model, optimizer, scheduler, loss_fn, dataloader, device):
     final_loss /= len(dataloader)  # The loss sum / mean / change dataloader to data
 
     return final_loss
+
+def valid_fn(model, loss_fn, dataloader, device):
+    model.eval()
+    final_loss = 0
+    valid_preds = []
+
+    for data in dataloader:
+        inputs, targets = data['x'].to(device), data['y'].to(device)
+        outputs = model(inputs)
+        targets = torch.reshape(targets, [targets.shape[0], 1])
+        loss = loss_fn(outputs, targets)
+
+        final_loss += loss.item()
+        valid_preds.append(outputs.sigmoid().detach().cpu().numpy())
+
+    final_loss /= len(dataloader)
+    valid_preds = np.concatenate(valid_preds)
+
+    return final_loss, valid_preds
 
 
 def run_train(train_dataset, valid_dataset, seed=2021):   # or name run_train
@@ -51,8 +71,8 @@ def run_train(train_dataset, valid_dataset, seed=2021):   # or name run_train
     EARLY_STOP = False
 
     num_features = 37
-    num_targets_0 = 5
-    hidden_size = 1024
+    num_targets_0 = 1
+    hidden_size = 512
 
     trainloader = torch.utils.data.DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)  # 128
     validloader = torch.utils.data.DataLoader(valid_dataset, batch_size=BATCH_SIZE, shuffle=False)
@@ -76,21 +96,20 @@ def run_train(train_dataset, valid_dataset, seed=2021):   # or name run_train
     early_stopping_steps = EARLY_STOPPING_STEPS
     early_step = 0
 
-    oof = 1
     best_loss = np.inf
 
     mod_name = f"FOLD_mod11_{seed}_{seed}_.pth"
 
     for epoch in range(EPOCHS):
         train_loss = train_fn(model, optimizer, scheduler, loss_tr, trainloader, DEVICE)  # completed data TODO
-        # valid_loss, valid_preds = valid_fn(model, loss_va, validloader, DEVICE)  # The model parameter TODO
-        print(f"SEED: {seed}, FOLD: {fold}, EPOCH: {epoch},train_loss: {train_loss}, valid_loss: {valid_loss}")
+        valid_loss, valid_preds = valid_fn(model, loss_va, validloader, DEVICE)  # The model parameter TODO
+        print(f"SEED: {seed}, FOLD: {seed}, EPOCH: {epoch},train_loss: {train_loss}, valid_loss: {valid_loss}")
 
         if valid_loss < best_loss:
 
             best_loss = valid_loss
             # oof[val_idx] = valid_preds
-            torch.save(model.state_dict(), mod_name)
+            torch.save(model.state_dict(), mod_name)  # TODO  deepcopy(mode.state_dict()) ?
 
         elif (EARLY_STOP == True):
 
@@ -103,9 +122,9 @@ def main():
 
     print(f'Read origin data.')
     data_dir = 'C:/ZhangLI/Codes/DataSet/个人违贷/'
-    data_dir = 'E:/Dataset/个人违贷/'
-    train_ = pd.read_csv(data_dir + 'default_train.csv', index_col='Unnamed: 0')
-    test_ = pd.read_csv(data_dir + 'default_test.csv', index_col='Unnamed: 0')
+    # data_dir = 'E:/Dataset/个人违贷/'
+    train_ = pd.read_csv(data_dir + 'default_train.csv')
+    test_ = pd.read_csv(data_dir + 'default_test.csv')
 
     x_train = train_.drop(['isDefault'], axis=1)
     y_train = train_['isDefault']
@@ -115,7 +134,7 @@ def main():
 
     # normalization
     print(f'Normalization.')
-    x_train[feature_cols], ss = norm_fit(x_train[feature_cols], True, 'quan')  # 标准化写的不错
+    x_train[feature_cols], ss = norm_fit(x_train[feature_cols], True, 'mima')  # another
     test_[feature_cols] = norm_tra(test_[feature_cols], ss)
 
     SEED = [1]

@@ -5,7 +5,7 @@
 
 import torch
 
-class TrainDataset:  # 这个地方的实现有点意思，如果可以的话，可以将任务的 df.value 都生成内置的模型
+class TrainDataset:
     def __init__(self, features, targets):
         self.features = features
         self.targets = targets
