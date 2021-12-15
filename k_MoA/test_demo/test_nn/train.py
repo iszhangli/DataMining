@@ -41,6 +41,7 @@ def valid_fn(model, loss_fn, dataloader, device):
     model.eval()
     final_loss = 0
     valid_preds = []
+    ture_label = []
 
     for data in dataloader:
         inputs, targets = data['x'].to(device), data['y'].to(device)
@@ -50,11 +51,18 @@ def valid_fn(model, loss_fn, dataloader, device):
 
         final_loss += loss.item()
         valid_preds.append(outputs.sigmoid().detach().cpu().numpy())
+        ture_label.append(targets.detach().cpu().numpy())
 
     final_loss /= len(dataloader)
     valid_preds = np.concatenate(valid_preds)
+    ture_label = np.concatenate(ture_label)
+    valid_preds_l = [i[0] for outputs in valid_preds for i in outputs]  # TODO
+    pred_label_l = [1 if i > 0.5 else 0 for i in valid_preds_l]
+    ture_label_l = [i[0] for targets in ture_label_l for i in targets]
 
-    return final_loss, valid_preds
+    result = binary_classifier_metrics(ture_label_l, pred_label_l, valid_preds_l)
+
+    return final_loss, valid_preds, result
 
 
 def run_train(train_dataset, valid_dataset, seed=2021):   # or name run_train
@@ -63,6 +71,7 @@ def run_train(train_dataset, valid_dataset, seed=2021):   # or name run_train
 
     # HyperParameters
     DEVICE = ('cuda' if torch.cuda.is_available() else 'cpu')
+    print(DEVICE)
     BATCH_SIZE = 128
     LEARNING_RATE = 1e-3
     WEIGHT_DECAY = 1e-5
@@ -102,8 +111,9 @@ def run_train(train_dataset, valid_dataset, seed=2021):   # or name run_train
 
     for epoch in range(EPOCHS):
         train_loss = train_fn(model, optimizer, scheduler, loss_tr, trainloader, DEVICE)  # completed data TODO
-        valid_loss, valid_preds = valid_fn(model, loss_va, validloader, DEVICE)  # The model parameter TODO
+        valid_loss, valid_preds, result = valid_fn(model, loss_va, validloader, DEVICE)  # The model parameter TODO
         print(f"SEED: {seed}, FOLD: {seed}, EPOCH: {epoch},train_loss: {train_loss}, valid_loss: {valid_loss}")
+        print(result)
 
         if valid_loss < best_loss:
 
@@ -121,8 +131,8 @@ def run_train(train_dataset, valid_dataset, seed=2021):   # or name run_train
 def main():
 
     print(f'Read origin data.')
-    data_dir = 'C:/ZhangLI/Codes/DataSet/个人违贷/'
-    # data_dir = 'E:/Dataset/个人违贷/'
+    # data_dir = 'C:/ZhangLI/Codes/DataSet/个人违贷/'
+    data_dir = 'E:/Dataset/个人违贷/'
     train_ = pd.read_csv(data_dir + 'default_train.csv')
     test_ = pd.read_csv(data_dir + 'default_test.csv')
 
