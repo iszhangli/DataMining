@@ -9,6 +9,7 @@ from sklearn.preprocessing import StandardScaler,MinMaxScaler,MaxAbsScaler,\
 import pandas as pd
 import numpy as np
 from sklearn.decomposition import PCA
+from sklearn.preprocessing import OneHotEncoder
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -158,3 +159,39 @@ def norm_fit(df_1, saveM = True, sc_name='zsco'):
 def norm_tra(df_1,ss_x):
     df_2 = pd.DataFrame(ss_x.transform(df_1),index = df_1.index,columns = df_1.columns)
     return(df_2)
+
+
+def one_hot_fit(df_1, fea=None, saveM=True):
+    enc = OneHotEncoder(handle_unknown='ignore')
+    category_col = fea
+    enc.fit(df_1[category_col])
+
+    value = enc.transform(df_1[category_col]).toarray()
+    f_name = enc.get_feature_names(category_col)
+    df_1[f_name] = value
+    df_1 = df_1.drop(category_col, axis=1)
+    if saveM == False:
+        return (df_1)
+    else:
+        return (df_1, enc)
+
+def one_hot_tra(df_1, fea=None, oo=None):
+    category_col = fea
+
+    value = oo.transform(df_1[category_col]).toarray()
+    f_name = oo.get_feature_names(category_col)
+    df_1[f_name] = value
+    df_1 = df_1.drop(category_col, axis=1)
+    return df_1
+
+
+def lower_sample_data(df, percent=1, tar_name='label'):
+    '''
+    '''
+    data1 = df[df[tar_name] == 1]  # 将多数类别的样本放在data1
+    data0 = df[df[tar_name] == 0]  # 将少数类别的样本放在data0
+    index = np.random.randint(
+        len(data1), size=int(percent * (len(df) - len(data1))))  # 随机给定下采样取出样本的序号
+    lower_data1 = data0.iloc[list(index)]  # 下采样
+    print(len(data0), len(lower_data1))
+    return(pd.concat([lower_data1, data1]))
