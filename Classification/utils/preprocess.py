@@ -4,14 +4,7 @@
 # @File : preprocess.py
 
 
-from sklearn.preprocessing import StandardScaler,MinMaxScaler,MaxAbsScaler,\
-    RobustScaler,Normalizer,QuantileTransformer,PowerTransformer
-import pandas as pd
-import numpy as np
-from sklearn.decomposition import PCA
-from sklearn.preprocessing import OneHotEncoder
-import matplotlib.pyplot as plt
-import seaborn as sns
+from utils.pyp import *
 
 
 
@@ -195,3 +188,21 @@ def lower_sample_data(df, percent=1, tar_name='label'):
     lower_data1 = data0.iloc[list(index)]  # 下采样
     print(len(data0), len(lower_data1))
     return(pd.concat([lower_data1, data1]))
+
+
+def sampler(X_train, y_train, how='under', rate=1):
+    '''
+    and any other
+    '''
+    X_smote, y_smote = X_train, y_train
+    if how == 'over':
+        over = RandomOverSampler(sampling_strategy=rate)
+        X_smote, y_smote = over.fit_resample(X_train, y_train)
+    elif how == 'under':
+        under = RandomUnderSampler(sampling_strategy=rate)
+        X_smote, y_smote = under.fit_resample(X_train, y_train)
+    elif how == 'smote':
+        smote = SMOTE(sampling_strategy="auto")
+        X_smote, y_smote = smote.fit_resample(X_train, y_train)
+
+    return X_smote, y_smote
