@@ -3,6 +3,9 @@
 # @Author : li.zhang
 # @File : processing.py
 
+
+
+
 from tools.pyp import *
 
 def average_smoothing(signal, kernel_size=3, stride=1):
@@ -22,3 +25,6 @@ def average_smoothing(signal, kernel_size=3, stride=1):
 
 single = np.array([2,3,4,6,7,3,8,6,4,7,4,3,8,9,6])
 print(average_smoothing(single))
+
+import lightgbm as lgb
+
