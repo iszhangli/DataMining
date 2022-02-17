@@ -36,4 +36,49 @@ snap_CA, snap_TX, and snap_WI: A binary variable (0 or 1) indicating whether the
 ```
 
 ## 思路
-1. 根据数据进行操作
+1. 需要进行的操作
+
+### 时间平稳序列的检验及方法
+1. 时序图/可视化检验[]
+2. 分段统计均值和方法
+3. 可视化统计特征 ACF-自相关系数 PACF-偏自相关系数
+4. 假设检验的方法 单位根 DF-test ADF-test PP-test DF-gls kpss
+
+### 非平稳序列转为平稳序列
+1. 差分 一阶差分 二阶差分
+2. 平滑
+3. 变换
+4. 分解
+
+### 白噪声检验
+
+
+### 小波变化
+
+
+### 算法
+1. naive approach
+2. Weighted Moving Average
+3. Exponential Moving Average
+4. Exponential Smoothing
+5. ARMA
+6. ARIMA
+7. SARIMA
+8. Prophet
+9. DNN 
+10. RF 
+11. ES 
+SARIMAX 
+XGB 
+LGBM 
+CNN 
+NN 
+CATboost 
+RNN 
+wavenet 
+n-beats 
+seq2seq 
+fbprophet 
+lstm
+
+
