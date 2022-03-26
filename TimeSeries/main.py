@@ -14,3 +14,9 @@ def returnNull(x, flag=''):
 
 r = returnNull(None, '')
 print(r==None)
+
+
+from arch.unitroot import ADF
+
+adf = ADF(data)
+adf.trend = 'ct'
