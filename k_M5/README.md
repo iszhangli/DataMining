@@ -64,13 +64,15 @@ snap_CA, snap_TX, and snap_WI: A binary variable (0 or 1) indicating whether the
 ### 算法
 1. naive approach
 2. Weighted Moving Average
-4. Exponential Smoothing
-4.1 Single Exponential Smoothing
-4.2 Holt线性趋势模型
-4.3 三阶
-Holt-Winters加法模型
-Holt-Winters乘法模型
-Holt-Winters的衰减法 能预测多长时间的序列
+3. Exponential Smoothing
+3.1 Single Exponential Smoothing
+3.2 Holt线性趋势模型
+3.2.1 Holt线性趋势模型
+3.2.2 Holt乘法趋势模型
+3.3 三阶
+3.3.1 Holt-Winters加法模型
+3.3.2 Holt-Winters乘法模型
+3.3.3 Holt-Winters的衰减法 能预测多长时间的序列
 5. ARMA
 6. ARIMA
 7. SARIMA
