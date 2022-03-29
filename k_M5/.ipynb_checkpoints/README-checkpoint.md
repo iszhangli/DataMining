@@ -50,23 +50,27 @@ snap_CA, snap_TX, and snap_WI: A binary variable (0 or 1) indicating whether the
 3. 可视化统计特征 ACF-自相关系数 PACF-偏自相关系数
 4. 假设检验的方法 单位根 DF-test ADF-test PP-test DF-gls kpss
 
+### 白噪声检验
+
+### 小波变化
+
+
 ### 非平稳序列转为平稳序列  怎么变回原来的序列
 1. 差分 一阶差分 二阶差分
 2. 平滑
 3. 变换
 4. 分解
 
-### 白噪声检验
-
-
-### 小波变化
-
-
 ### 算法
 1. naive approach
 2. Weighted Moving Average
-3. Exponential Moving Average
 4. Exponential Smoothing
+4.1 Single Exponential Smoothing
+4.2 Holt线性趋势模型
+4.3 三阶
+Holt-Winters加法模型
+Holt-Winters乘法模型
+Holt-Winters的衰减法 能预测多长时间的序列
 5. ARMA
 6. ARIMA
 7. SARIMA
