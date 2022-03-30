@@ -66,10 +66,10 @@ snap_CA, snap_TX, and snap_WI: A binary variable (0 or 1) indicating whether the
 2. Weighted Moving Average
 3. Exponential Smoothing
 3.1 Single Exponential Smoothing
-3.2 Holt线性趋势模型
+3.2 Holt
 3.2.1 Holt线性趋势模型
 3.2.2 Holt乘法趋势模型
-3.3 三阶
+3.3 Holt-winter
 3.3.1 Holt-Winters加法模型
 3.3.2 Holt-Winters乘法模型
 3.3.3 Holt-Winters的衰减法 能预测多长时间的序列
@@ -79,8 +79,6 @@ snap_CA, snap_TX, and snap_WI: A binary variable (0 or 1) indicating whether the
 8. Prophet
 9. DNN 
 10. RF 
-11. ES 
-SARIMAX 
 XGB 
 LGBM 
 CNN 
@@ -90,7 +88,6 @@ RNN
 wavenet 
 n-beats 
 seq2seq 
-fbprophet 
 lstm
 
 
