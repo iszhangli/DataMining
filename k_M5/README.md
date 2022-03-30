@@ -47,6 +47,7 @@ snap_CA, snap_TX, and snap_WI: A binary variable (0 or 1) indicating whether the
 平稳序列应该如何理解呢？
 1. 时序图/可视化检验[]
 2. 分段统计均值和方法
+跟新移动平均函数？？？
 3. 可视化统计特征 ACF-自相关系数 PACF-偏自相关系数
 4. 假设检验的方法 单位根 DF-test ADF-test PP-test DF-gls kpss
 
@@ -55,7 +56,8 @@ snap_CA, snap_TX, and snap_WI: A binary variable (0 or 1) indicating whether the
 ### 小波变化
 
 
-### 非平稳序列转为平稳序列  怎么变回原来的序列
+### 非平稳序列转为平稳序列  
+函数封装 ？？？？
 1. 差分 一阶差分 二阶差分
 2. 平滑
 3. 变换
