@@ -78,18 +78,21 @@ snap_CA, snap_TX, and snap_WI: A binary variable (0 or 1) indicating whether the
 5. ARMA
 6. ARIMA
 7. SARIMA
+8. LGBM
+9. RF
+10. CATBOOST
+11. XGB
 8. Prophet
 9. DNN 
-10. RF 
-XGB 
-LGBM 
-CNN 
+
 NN 
-CATboost 
-RNN 
-wavenet 
-n-beats 
-seq2seq 
+RNN
 lstm
+CNN 
+n-beats 
+seq2seq
+wavenet 
+ 
+
 
 
