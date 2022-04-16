@@ -1,0 +1,187 @@
+# -*-Encoding: utf-8 -*-
+################################################################################
+#
+# Copyright (c) 2022 Baidu.com, Inc. All Rights Reserved
+#
+################################################################################
+"""
+Description: Wind turbine dataset utilities
+Authors: Lu,Xinjiang (luxinjiang@baidu.com)
+Date:    2022/03/10
+"""
+import os
+import numpy as np
+import pandas as pd
+import paddle
+from paddle.io import Dataset
+
+
+class Scaler(object):
+    """
+    Desc: Normalization utilities
+    """
+    def __init__(self):
+        self.mean = 0.
+        self.std = 1.
+
+    def fit(self, data):
+        # type: (paddle.tensor) -> None
+        """
+        Desc:
+            Fit the data
+        Args:
+            data:
+        Returns:
+            None
+        """
+        self.mean = np.mean(data)
+        self.std = np.std(data)
+
+    def transform(self, data):
+        # type: (paddle.tensor) -> paddle.tensor
+        """
+        Desc:
+            Transform the data
+        Args:
+            data:
+        Returns:
+            The transformed data
+        """
+        mean = paddle.to_tensor(self.mean).type_as(data).to(data.device) if paddle.is_tensor(data) else self.mean
+        std = paddle.to_tensor(self.std).type_as(data).to(data.device) if paddle.is_tensor(data) else self.std
+        return (data - mean) / std
+
+    def inverse_transform(self, data):
+        # type: (paddle.tensor) -> paddle.tensor
+        """
+        Desc:
+            Restore to the original data
+        Args:
+            data: the transformed data
+        Returns:
+            The original data
+        """
+        mean = paddle.to_tensor(self.mean) if paddle.is_tensor(data) else self.mean
+        std = paddle.to_tensor(self.std) if paddle.is_tensor(data) else self.std
+        return (data * std) + mean
+
+
+class WindTurbineDataset(Dataset):
+    """
+    Desc: Data preprocessing,
+          Here, e.g.    15 days for training,
+                        3 days for validation,
+                        and 6 days for testing
+    """
+    def __init__(self, data_path,
+                 filename='my.csv',
+                 flag='train',
+                 size=None, # [144, 288]
+                 turbine_id=0,
+                 task='MS',
+                 target='Target',
+                 scale=True,
+                 start_col=2,       # the start column index of the data one aims to utilize
+                 day_len=24 * 6,  # 144
+                 train_days=15,  # 153   # 15 days
+                 val_days=3,     # 16   # 3 days
+                 test_days=6,    # 15   # 6 days
+                 total_days=30   # 184   # 30 days
+                 ):
+        super().__init__()
+        self.unit_size = day_len
+        if size is None:
+            self.input_len = self.unit_size
+            self.output_len = self.unit_size
+        else:
+            self.input_len = size[0]
+            self.output_len = size[1]
+        # initialization
+        assert flag in ['train', 'test', 'val']
+        type_map = {'train': 0, 'val': 1, 'test': 2}
+        self.set_type = type_map[flag] # 0
+        self.task = task  # MS
+        self.target = target  # Patv
+        self.scale = scale  # True
+        self.start_col = start_col  # 3
+        self.data_path = data_path  #
+        self.filename = filename
+        self.tid = turbine_id  # 0
+
+        # If needed, we employ the predefined total_size (e.g. one month)
+        self.total_size = self.unit_size * total_days
+        #
+        self.train_size = train_days * self.unit_size
+        self.val_size = val_days * self.unit_size
+        self.test_size = test_days * self.unit_size
+        # self.test_size = self.total_size - train_size - val_size
+        #
+        # Or, if total_size is unavailable:
+        # self.total_size = self.train_size + self.val_size + self.test_size
+        self.__read_data__()
+
+    def __read_data__(self):
+        self.scaler = Scaler()
+        df_raw = pd.read_csv(os.path.join(self.data_path, self.filename))
+        border1s = [self.tid * self.total_size,
+                    self.tid * self.total_size + self.train_size - self.input_len,
+                    self.tid * self.total_size + self.train_size + self.val_size - self.input_len
+                    ]  # [0, 153*144-144, 169*144-144]  []  []
+        border2s = [self.tid * self.total_size + self.train_size,
+                    self.tid * self.total_size + self.train_size + self.val_size,
+                    self.tid * self.total_size + self.train_size + self.val_size + self.test_size
+                    ]  # [154*144, 169*144, 184*144]  # 1:train 2:val 3:test   tid:turbine_id  and data_set sorted by TurbID
+        border1 = border1s[self.set_type]
+        border2 = border2s[self.set_type]
+
+        df_data = df_raw
+        if self.task == 'M':
+            cols_data = df_raw.columns[self.start_col:]
+            df_data = df_raw[cols_data]
+        elif self.task == 'MS':
+            cols_data = df_raw.columns[self.start_col:]
+            df_data = df_raw[cols_data]
+        elif self.task == 'S':
+            df_data = df_raw[[self.tid, self.target]]  # TODO what is means?
+
+        # Turn off the SettingWithCopyWarning
+        pd.set_option('mode.chained_assignment', None)
+        df_data.replace(to_replace=np.nan, value=0, inplace=True)
+
+        if self.scale:
+            train_data = df_data[border1s[0]:border2s[0]]
+            self.scaler.fit(train_data.values)
+            data = self.scaler.transform(df_data.values)
+        else:
+            data = df_data.values
+        self.data_x = data[border1:border2]
+        self.data_y = data[border1:border2]  # data_x = data_y
+
+    def __getitem__(self, index):
+        # input: X, Y  但是这里的 X 和 Y 是相同的
+        # preprocess: 怎么根据这个数据集返回一个 x_, y_
+        #
+        # Only for customized use.
+        # When sliding window not used, e.g. prediction without overlapped input/output sequences
+        if self.set_type >= 3:
+            index = index * self.output_len
+        #
+        # Standard use goes here.
+        # Sliding window with the size of input_len + output_len
+        s_begin = index
+        s_end = s_begin + self.input_len
+        r_begin = s_end
+        r_end = r_begin + self.output_len
+        seq_x = self.data_x[s_begin:s_end]
+        seq_y = self.data_y[r_begin:r_end]
+        return seq_x, seq_y
+
+    def __len__(self):
+        # In our case, the sliding window is adopted, the number of samples is calculated as follows
+        if self.set_type < 3:
+            return len(self.data_x) - self.input_len - self.output_len + 1
+        # Otherwise, if sliding window is not adopted
+        return int((len(self.data_x) - self.input_len) / self.output_len)
+
+    def inverse_transform(self, data):
+        return self.scaler.inverse_transform(data)

@@ -82,13 +82,10 @@ snap_CA, snap_TX, and snap_WI: A binary variable (0 or 1) indicating whether the
 9. RF
 10. CATBOOST
 11. XGB
-8. Prophet
-9. DNN 
+12. LSTM
 
-NN 
-RNN
-lstm
-CNN 
+8. Prophet
+
 n-beats 
 seq2seq
 wavenet 

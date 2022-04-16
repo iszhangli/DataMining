@@ -3,7 +3,7 @@
 # @Author : li.zhang
 # @File : smoothing.py
 
-from tools.pyp import *
+from utils.pyp import *
 
 
 # 平稳性检验

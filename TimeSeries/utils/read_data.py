@@ -3,7 +3,7 @@
 # @Author : li.zhang
 # @File : read_data.py
 
-from tools.pyp import *
+from utils.pyp import *
 
 import numpy as np
 import pandas as pd

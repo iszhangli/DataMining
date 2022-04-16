@@ -6,7 +6,7 @@
 
 
 
-from tools.pyp import *
+from utils.pyp import *
 
 def average_smoothing(signal, kernel_size=3, stride=1):
     sample = []
