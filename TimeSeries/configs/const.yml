@@ -1,0 +1,31 @@
+# -*- coding: utf-8 -*-
+# @Time : 2022/4/20 15:55
+# @Author : li.zhang
+# @File : const.py
+
+
+# data set param
+train_size: 22032   # 24 * 6 * 153
+val_size: 2304  # 24 * 6 * 16
+test_size: 2160  # 24 * 6 * 15
+
+
+input_size: 10  # 特征的个数
+output_size: 288  # 预测的长度
+hidden_size: 48  # 隐藏层的个数
+layer_size: 1
+
+# input data path
+input_path_dir: 'C:/ZhangLI/Codes/DataSet/kdd-cup/'
+file_name: 'sdwpf_baidukddcup2022_full.csv'
+cols: ['Wspd', 'Wdir', 'Etmp', 'Itmp', 'Ndir', 'Pab1', 'Pab2', 'Pab3', 'Prtv', 'Patv']
+lable: 'Patv'
+
+# model param
+epoches: 4
+batch_size: 32
+lr: 0.0001
+
+# early stop
+delta: 0
+patient: 1

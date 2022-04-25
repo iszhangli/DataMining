@@ -22,3 +22,18 @@ color_cycle = cycle(plt.rcParams['axes.prop_cycle'].by_key()['color'])
 from statsmodels.tsa.stattools import adfuller
 # 白噪声
 from statsmodels.stats.diagnostic import acorr_ljungbox
+
+
+## model
+from torch.utils.data import Dataset
+from torch.utils.data import DataLoader
+
+from sklearn.preprocessing import MinMaxScaler
+from torch.autograd import Variable
+from torch import nn
+import torch
+
+import random
+import os
+
+##

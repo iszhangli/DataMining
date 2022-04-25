@@ -54,7 +54,7 @@ def prep_env():
     parser.add_argument('--capacity', type=int, default=134, help="The capacity of a wind farm, "
                                                                   "i.e. the number of wind turbines in a wind farm")
     parser.add_argument('--turbine_id', type=int, default=0, help='Turbine ID')
-    parser.add_argument('--pred_file', type=str, default='./predict.py',
+    parser.add_argument('--pred_file', type=str, default='./../../predict.py',
                         help='The path to the script for making predictions')
     parser.add_argument('--is_debug', type=bool, default=False, help='True or False')
     args = parser.parse_args()

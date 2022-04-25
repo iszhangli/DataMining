@@ -8,6 +8,24 @@
 
 from utils.pyp import *
 
+
+
+def read_data(conf):
+    """
+    Desc: read data
+    """
+    input_path = conf['input_path_dir']
+    file_name = conf['file_name']
+    cols = conf['cols']
+    data_raw = pd.read_csv(f'{input_path}{file_name}')
+    data_raw[cols] = data_raw[cols].fillna(0)
+    scaler = MinMaxScaler()
+    scaler = scaler.fit(data_raw[cols])
+    data_tran = scaler.transform(data_raw[cols])
+    return data_tran
+
+
+
 def average_smoothing(signal, kernel_size=3, stride=1):
     sample = []
     start = 0
@@ -23,8 +41,6 @@ def average_smoothing(signal, kernel_size=3, stride=1):
     return np.array(sample)
 
 
-single = np.array([2,3,4,6,7,3,8,6,4,7,4,3,8,9,6])
-print(average_smoothing(single))
 
-import lightgbm as lgb
+
 
