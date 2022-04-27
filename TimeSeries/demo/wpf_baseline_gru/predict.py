@@ -12,9 +12,9 @@ Date:    2022/03/10
 import os
 import paddle
 import numpy as np
-from common import Experiment
-from common import traverse_wind_farm
-import metrics
+from demo.wpf_baseline_gru.common import Experiment
+from demo.wpf_baseline_gru.common import traverse_wind_farm
+import demo.wpf_baseline_gru.metrics
 
 
 def forecast_one(experiment, model_folder):
@@ -30,7 +30,7 @@ def forecast_one(experiment, model_folder):
     """
     args = experiment.get_args()
     model = experiment.get_model()
-    path_to_model = os.path.join(args["checkpoints"], model_folder, 'model_{}'.format(str(args["turbine_id"])))
+    path_to_model = os.path.join('./checkpoints', model_folder, 'model_{}'.format(str(args["turbine_id"]))) # args["checkpoints"]
     model.set_state_dict(paddle.load(path_to_model))
 
     test_data, test_loader = experiment.get_data(flag='test')

@@ -12,8 +12,9 @@ Date:    2022/03/10
 import os
 import sys
 import traceback
-import metrics
-from prepare import prep_env
+from demo.wpf_baseline_gru import metrics
+from demo.wpf_baseline_gru.prepare import prep_env
+from demo.wpf_baseline_gru.predict import forecast
 
 
 class Loader(object):
@@ -55,7 +56,7 @@ def evaluate(settings):
         A score
     """
     forecast_module = Loader.load(settings["pred_file"])
-    predictions, grounds = forecast_module.forecast(settings)
+    predictions, grounds = forecast(settings)
 
     # NOTE: Before calculating the metrics, the unit of the outcome (e.g. predicted or true) power
     #       should be converted from Kilo Watt to Mega Watt first.

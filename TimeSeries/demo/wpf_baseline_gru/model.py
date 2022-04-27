@@ -42,15 +42,15 @@ class BaselineGruModel(nn.Layer):
         Desc:
             The specific implementation for interface forward
         Args:
-            x_enc:
+            x_enc: [32, 144, 10] ->
         Returns:
             A tensor
         """
-        x = paddle.zeros([x_enc.shape[0], self.output_len, x_enc.shape[2]])
-        x_enc = paddle.concat((x_enc, x), 1)
-        x_enc = paddle.transpose(x_enc, perm=(1, 0, 2))
-        dec, _ = self.lstm(x_enc)
-        dec = paddle.transpose(dec, perm=(1, 0, 2))
-        sample = self.projection(self.dropout(dec))
-        sample = sample[:, -self.output_len:, -self.out:]
+        x = paddle.zeros([x_enc.shape[0], self.output_len, x_enc.shape[2]])  # [32, 288, 10]
+        x_enc = paddle.concat((x_enc, x), 1)  # [32, 432, 10]
+        x_enc = paddle.transpose(x_enc, perm=(1, 0, 2))  # [432, 32, 10]
+        dec, _ = self.lstm(x_enc) # [432, 32, 48(hidden_size)]  和 batch_size和 seq_len(step_len)没有关系
+        dec = paddle.transpose(dec, perm=(1, 0, 2))  # [32, 432, 48]
+        sample = self.projection(self.dropout(dec))   # [32, 432, 1]
+        sample = sample[:, -self.output_len:, -self.out:]  # [32, 288, 1]
         return sample  # [B, L, D]
