@@ -20,7 +20,7 @@ def prep_env():
     """
     parser = argparse.ArgumentParser(description='Long Term Wind Power Forecasting')
     ###
-    parser.add_argument('--data_path', type=str, default='C:/ZhangLI/Codes/DataSet/kdd-cup/', help='Path to the data file')
+    parser.add_argument('--data_path', type=str, default='E:/Dataset/kdd/', help='Path to the data file')  # C:/ZhangLI/Codes/DataSet/kdd-cup/
     parser.add_argument('--filename', type=str, default='sdwpf_baidukddcup2022_full.csv',
                         help='Filename of the input data, change it if necessary')
     parser.add_argument('--task', type=str, default='MS', help='The type of forecasting task, '

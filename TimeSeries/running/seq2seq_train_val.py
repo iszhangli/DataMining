@@ -15,7 +15,7 @@ def train_and_val():
     Desc: ...
     """
     args = parsing_args()
-    args['device'] = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    args['device'] = 'cpu' # torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     data_set = read_data(args)
 

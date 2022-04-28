@@ -257,7 +257,7 @@ def train_model(model, TrainX, Trainy, ValidX, Validy, seq_length, n_epochs):
     return model.eval(), history
 
 INPUT = 'C:/ZhangLI/Codes/DataSet/m5-forecasting-accuracy'
-# INPUT = 'E:/Dataset/m5-forecasting-accuracy/'
+INPUT = 'E:/Dataset/m5-forecasting-accuracy/'
 trainX = joblib.load(f'{INPUT}/trainX.pkl')
 trainy = joblib.load(f'{INPUT}/trainy.pkl')
 validX = joblib.load(f'{INPUT}/validX.pkl')

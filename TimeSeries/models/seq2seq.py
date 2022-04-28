@@ -89,14 +89,14 @@ class Attention(nn.Module):
         attention = torch.add(attention, 1)
 
         # attention= [batch size, src len]
-        a = F.softmax(attention, dim=1)
+        a = F.softmax(attention, dim=1)  # TODO equ
 
         return a
 
 
 
 class AttentionDecoder(nn.Module):
-    def __init__(self, seq_len, attention, input_dim=64, n_features=1, encoder_hidden_state=512):
+    def __init__(self, seq_len, attention, input_dim=64, n_features=1, encoder_hidden_state=64):
         super(AttentionDecoder, self).__init__()
 
         self.seq_len, self.input_dim = seq_len, input_dim
@@ -105,7 +105,7 @@ class AttentionDecoder(nn.Module):
 
         self.rnn1 = nn.LSTM(
             # input_size=1,
-            input_size=encoder_hidden_state + 1,  # Encoder Hidden State + One Previous input
+            input_size=encoder_hidden_state + n_features,  # Encoder Hidden State + One Previous input
             hidden_size=input_dim,
             num_layers=3,
             batch_first=True,
@@ -156,7 +156,7 @@ class Seq2Seq(nn.Module):
         device = self.args['device']
 
         self.encoder = Encoder(self.args, seq_len, n_features, embedding_dim).to(device)
-        self.attention = Attention(512, 512)
+        self.attention = Attention(embedding_dim, embedding_dim)
         self.output_length = output_length
         self.decoder = AttentionDecoder(seq_len, self.attention, embedding_dim, n_features).to(device)
 
@@ -173,10 +173,10 @@ class Seq2Seq(nn.Module):
         for out_days in range(self.output_length):
             prev_x, prev_hidden, prev_cell = self.decoder(prev_output, hidden, cell, encoder_output)
             hidden, cell = prev_hidden, prev_cell
-            prev_output = prev_x.unsqueeze(1)[:, :, -1:]
+            prev_output = prev_x.unsqueeze(1)
 
             targets_ta.append(prev_x[:, -1:])
 
-        targets = torch.stack(targets_ta)
+        targets = torch.stack(targets_ta, dim=1).reshape((-1,self.args['output_length']))
 
         return targets

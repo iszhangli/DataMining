@@ -100,6 +100,7 @@ class ExpLSTM():
         """
         Desc: validation model
         """
+        model = model.eval()
         dlv = self.get_data('val')
         val_loss = []
         for batch_x, batch_y in dlv:

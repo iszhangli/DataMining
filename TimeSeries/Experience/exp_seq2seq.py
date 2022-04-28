@@ -40,11 +40,35 @@ class ExpSeq2Seq():
         return dl
 
 
+    def val(self, seq2seq, criterion):
+        """
+        :param model:
+        :param criterion:
+        :return:
+        """
+        dlv = self.get_data('val')
+        val_loss = []
+        seq2seq = seq2seq.eval()
+        for batch_x, batch_y in dlv:
+            batch_x = batch_x.to(torch.float32).to(self.args['device'])
+
+            pre_y = seq2seq(batch_x, batch_x[:, -1:, :])
+
+            batch_y = batch_y[:, :, -1:].reshape((-1, 288)).to(self.args['device'])
+
+            loss = criterion(batch_y, pre_y)
+            val_loss.append(loss.to('cpu').item())
+        val_loss = np.average(val_loss)
+        return val_loss
+
 
     def training(self):
         """
         Desc: train model
         """
+        history = dict(train=[], val=[])
+        best_loss = 10000.0
+
         self.seed_everything(1024)
 
         dlt = self.get_data('train')
@@ -58,16 +82,38 @@ class ExpSeq2Seq():
 
         epoches = self.args['epoches']
 
-        for epoche in range(epoches):
+        for epoch in range(epoches):
             seq2seq = seq2seq.train()
             train_loss = []
 
             for batch_x, batch_y in dlt:
-                batch_x = batch_x.to(torch.float32)
+                batch_x = batch_x.to(torch.float32).to(self.args['device'])
 
-                pre_y = seq2seq(batch_x, batch_x[:, -1:, -1:])
+                pre_y = seq2seq(batch_x, batch_x[:, -1:, :])
 
-                # 对比 和 batch_y得到新的数据
+                batch_y = batch_y[:, :, -1:].reshape((-1, self.args['output_length'])).to(self.args['device'])
+
+                loss = criterion(batch_y, pre_y)
+                train_loss.append(loss.to('cpu').item())
                 optimizer.step()
                 optimizer.zero_grad()
+
+                print("Train Loss: {}".format(loss.to('cpu').item()))
+                # torch.cuda.empty_cache()  # TODO CUDA boom
+            train_loss = np.average(train_loss)
+            val_loss =  self.val(seq2seq, criterion)
+            print("Epoch: {}, \nTrain Loss: {}, \nValidation Loss: {}".format(epoch, train_loss, val_loss))
+
+            history['train'].append(train_loss)
+            history['val'].append(val_loss)
+
+            if val_loss < best_loss:
+                best_loss = val_loss
+                torch.save(seq2seq.state_dict(), './../checkpoints/seq2seq_best_model.pth')
+                print("saved best model epoch:", epoch, "val loss is:", val_loss)
+
+            scheduler.step()
+            return history
+
+
 
