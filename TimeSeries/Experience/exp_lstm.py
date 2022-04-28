@@ -5,7 +5,7 @@
 
 from utils.pyp import *
 
-from XXDataSet.gru_dataset import GruDataset
+from dataset.gru_dataset import GruDataset
 from models.lstm import RnnModel
 
 class ExpLSTM():
@@ -38,7 +38,6 @@ class ExpLSTM():
         Desc: the format of DataLoader
         """
         ds = GruDataset(self.conf, self.data, flag)
-        shuffle = True
         if flag == 'train' or flag == 'val':
             shuffle = True
         else:
@@ -137,6 +136,8 @@ class ExpLSTM():
         epoches = self.conf['epoches']
 
         for i in range(epoches):
+            lstm = lstm.train()
+
             train_loss = []
             for batch_x, batch_y in dlt:
                 batch_x = batch_x.to(torch.float32)

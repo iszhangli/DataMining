@@ -257,7 +257,7 @@ def train_model(model, TrainX, Trainy, ValidX, Validy, seq_length, n_epochs):
     return model.eval(), history
 
 INPUT = 'C:/ZhangLI/Codes/DataSet/m5-forecasting-accuracy'
-INPUT = 'E:/Dataset/m5-forecasting-accuracy/'
+# INPUT = 'E:/Dataset/m5-forecasting-accuracy/'
 trainX = joblib.load(f'{INPUT}/trainX.pkl')
 trainy = joblib.load(f'{INPUT}/trainy.pkl')
 validX = joblib.load(f'{INPUT}/validX.pkl')
@@ -277,7 +277,7 @@ def init_weights(m):
 
 model.apply(init_weights)
 
-optimizer = torch.optim.Adam(model.parameters(), lr=4e-3,weight_decay=1e-5)
+optimizer = torch.optim.Adam(model.parameters(), lr=4e-3, weight_decay=1e-5)
 criterion = torch.nn.MSELoss()
 scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max = 5e-3, eta_min=1e-8, last_epoch=-1)
 
