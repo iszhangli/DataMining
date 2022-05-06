@@ -16,8 +16,8 @@ hidden_size: 48  # 隐藏层的个数
 layer_size: 1
 
 # input data path
-# input_path_dir: 'C:/ZhangLI/Codes/DataSet/kdd-cup/'
-input_path_dir: 'E:/Dataset/kdd/'
+input_path_dir: 'C:/ZhangLI/Codes/DataSet/kdd-cup/'
+# input_path_dir: 'E:/Dataset/kdd/'
 file_name: 'sdwpf_baidukddcup2022_full.csv'
 cols: ['Wspd', 'Wdir', 'Etmp', 'Itmp', 'Ndir', 'Pab1', 'Pab2', 'Pab3', 'Prtv', 'Patv']
 lable: 'Patv'

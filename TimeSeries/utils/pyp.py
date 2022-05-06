@@ -12,11 +12,8 @@ from matplotlib import pyplot as plt
 from matplotlib import colors
 from matplotlib.colors import Normalize
 
+# 可视化
 from itertools import cycle
-pd.set_option('max_columns', 50)
-plt.style.use('bmh')
-color_pal = plt.rcParams['axes.prop_cycle'].by_key()['color']
-color_cycle = cycle(plt.rcParams['axes.prop_cycle'].by_key()['color'])
 
 # adf test
 from statsmodels.tsa.stattools import adfuller
