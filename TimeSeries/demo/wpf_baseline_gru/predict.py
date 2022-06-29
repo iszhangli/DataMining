@@ -10,12 +10,13 @@ Authors: Lu,Xinjiang (luxinjiang@baidu.com)
 Date:    2022/03/10
 """
 import os
-import paddle
+
 import numpy as np
+import paddle
+
 from demo.wpf_baseline_gru.common import Experiment
 from demo.wpf_baseline_gru.common import traverse_wind_farm
-import demo.wpf_baseline_gru.metrics
-
+from demo.wpf_baseline_gru import metrics
 
 def forecast_one(experiment, model_folder):
     # type: (Experiment, str) -> (paddle.tensor, paddle.tensor)

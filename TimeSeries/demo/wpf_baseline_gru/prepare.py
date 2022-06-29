@@ -20,7 +20,7 @@ def prep_env():
     """
     parser = argparse.ArgumentParser(description='Long Term Wind Power Forecasting')
     ###
-    parser.add_argument('--data_path', type=str, default='E:/Dataset/kdd/', help='Path to the data file')  # C:/ZhangLI/Codes/DataSet/kdd-cup/
+    parser.add_argument('--data_path', type=str, default='C:/ZhangLI/Codes/DataSet/kdd-cup/', help='Path to the data file')  # E:/Dataset/kdd/
     parser.add_argument('--filename', type=str, default='sdwpf_baidukddcup2022_full.csv',
                         help='Filename of the input data, change it if necessary')
     parser.add_argument('--task', type=str, default='MS', help='The type of forecasting task, '
@@ -51,8 +51,8 @@ def prep_env():
     parser.add_argument('--use_gpu', type=bool, default=True, help='Whether or not use GPU')
     parser.add_argument('--gpu', type=int, default=0, help='GPU ID')
     # parser.add_argument('--use_multi_gpu', action='store_true', default=False, help='Use multiple gpus or not')
-    parser.add_argument('--capacity', type=int, default=134, help="The capacity of a wind farm, "
-                                                                  "i.e. the number of wind turbines in a wind farm")
+    parser.add_argument('--capacity', type=int, default=2, help="The capacity of a wind farm, "
+                                                                  "i.e. the number of wind turbines in a wind farm")  # TODO 134
     parser.add_argument('--turbine_id', type=int, default=0, help='Turbine ID')
     parser.add_argument('--pred_file', type=str, default='./../../predict.py',
                         help='The path to the script for making predictions')

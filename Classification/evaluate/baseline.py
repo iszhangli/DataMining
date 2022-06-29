@@ -66,8 +66,8 @@ def baseline_model(train_set, tar_name='label'):
         'verbose': -1,
         'metric': 'auc',
     }
-    model = lgb.train(params, train_set=train_data_l, num_boost_round=500, verbose_eval=100, valid_sets=[train_data_l, valid_data_l], early_stopping_rounds=20)
-    predict_y = model.predict(val_x) # model['cvbooster']
+    clgb = lgb.train(params, train_set=train_data_l, num_boost_round=500, verbose_eval=100, valid_sets=[train_data_l, valid_data_l], early_stopping_rounds=20)
+    predict_y = clgb.predict(val_x) # model['cvbooster']
     predict_label = [1 if i >0.5 else 0 for i in predict_y]
     binary_classifier_metrics(val_y, predict_label, predict_y)
     # -------------------- xgboost ----------------------

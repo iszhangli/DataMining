@@ -162,7 +162,8 @@ def adjust_lgb_parameters(train_set=None, tar_name='label', test_set=None):
     """
 
     epochs = 100
-    x_lim = (0, 5)
+    n_estimators = 1000
+    x_lim = (0, n_estimators+10)
 
     Xtrain, Xtest, Ytrain, Ytest = train_test_split(train_set.drop(tar_name, axis=1), train_set[tar_name],
                                                     test_size=0.3)
@@ -176,7 +177,7 @@ def adjust_lgb_parameters(train_set=None, tar_name='label', test_set=None):
         'boosting_type': 'gbdt',
         'verbose': -1,
         'metric': 'binary_logloss',
-        'n_estimators': 100,
+        'n_estimators': n_estimators,
     }
     eval_result_ = {}
     model = lgb.train(params, train_set=train_data, verbose_eval=epochs, valid_sets=[train_data, valid_data], evals_result=eval_result_)
@@ -187,7 +188,7 @@ def adjust_lgb_parameters(train_set=None, tar_name='label', test_set=None):
         'boosting_type': 'gbdt',
         'verbose': -1,
         'metric': 'binary_logloss',
-        'n_estimators': 100,
+        'n_estimators': n_estimators,
         'learning_rate': 0.03,
         'num_leaves': 21,
         'reg_alpha': 0.2,
@@ -202,7 +203,7 @@ def adjust_lgb_parameters(train_set=None, tar_name='label', test_set=None):
         'boosting_type': 'gbdt',
         'verbose': -1,
         'metric': 'binary_logloss',
-        'n_estimators': 100,
+        'n_estimators': n_estimators,
         'learning_rate': 0.03,
         'num_leaves': 21,
         'reg_alpha': 0.2,
