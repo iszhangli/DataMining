@@ -1,4 +1,4 @@
-### 第10名方案 
+j ### 第10名方案 
 * [https://zhuanlan.zhihu.com/p/149061129]
 * [http://xtf615.com/2020/06/17/KDD-CUP-2020-Debiasing-Rush/]
 
